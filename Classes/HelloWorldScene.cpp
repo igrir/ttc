@@ -72,6 +72,28 @@ bool HelloWorld::init()
 			this->addChild(sprite);
 		}
 		
+		for(int i=0;i<5;i++){
+			//adding the square
+			CCSprite *sprite = CCSprite::spriteWithFile("rectangle.png", CCRectMake(0,0,98,98));
+			
+			//get the size of the display
+			CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+			
+			int positionX = rand()%(int)(winSize.width);
+			int positionY = rand()%(int)(winSize.height);
+			
+			sprite->setPosition(ccp(positionX, positionY));
+			
+			
+			//3 is reserved for square
+			sprite->setTag(3);
+			_targets->addObject(sprite);
+			
+			this->addChild(sprite);
+			
+			
+		}
+		
 		
 	}
 	
@@ -91,11 +113,10 @@ void HelloWorld::ccTouchesEnded(CCSet* touches, CCEvent* event){
 	
 	CCPoint realDest = ccp(location.x, location.y);
 	
-	CCPoint startPosition = ccp(0,0);
-	
+	//making the touchers for hitting the objects
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	CCSprite *bulatong = CCSprite::spriteWithFile("circle_bullet.png", CCRectMake(0, 0, 33,33));
-	bulatong->setPosition(startPosition);
+	CCSprite *bulatong = CCSprite::spriteWithFile("circle_bullet.png", CCRectMake(0, 0, 1,1));
+	bulatong->setPosition(realDest);
 	
 	//if(offX <= 0) return;
 	
@@ -107,8 +128,7 @@ void HelloWorld::ccTouchesEnded(CCSet* touches, CCEvent* event){
 	
 	
 	//animate the bulatong (the small circle)
-	bulatong->runAction(CCSequence::actions(CCMoveTo::actionWithDuration(3, realDest), CCCallFuncN::actionWithTarget(this, callfuncN_selector(HelloWorld::spriteMoveFinished)), NULL));
-
+	bulatong->runAction(CCSequence::actions(CCMoveTo::actionWithDuration(0, realDest), CCCallFuncN::actionWithTarget(this, callfuncN_selector(HelloWorld::spriteMoveFinished)), NULL));
 }
 
 
