@@ -1,0 +1,15 @@
+This is my game based on tutorial in http://www.cocos2d-x.org/projects/cocos2d-x/wiki/
+
+This source cover adding the sprites, moving the sprites, and collision based on square bound.
+
+Because this game created with cocos2d-x, so, this is C++ project :)
+
+Ah, and the code of the game is in HelloWorldScene.cpp and HelloWorldScene.h
+
+
+Hope you like it :D
+
+
+Best Regards
+
+giripp
